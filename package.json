@@ -1,0 +1,50 @@
+{
+  "name": "react-datatable-component-extensions",
+  "version": "1.0.0",
+  "description": "Export table data as a CSV or Excel file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "react-scripts test",
+    "build": "./node_modules/.bin/babel src --out-file index.js",
+    "minify": "./node_modules/.bin/babel --minified src --out-file index.min.js ",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barisates/react-datatable-component-extensions.git"
+  },
+  "keywords": [
+    "react",
+    "datatable",
+    "extensions"
+  ],
+  "author": {
+    "name": "Barış Ateş",
+    "email": "info@barisates.com",
+    "url": "http://barisates.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barisates/react-datatable-component-extensions/issues"
+  },
+  "homepage": "https://github.com/barisates/react-datatable-component-extensions#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-console": "^1.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/react": "^5.2.1",
+    "babel-loader": "^8.0.6",
+    "react-scripts": "3.1.2",
+    "react-data-table-component": "^3.5.1",
+    "styled-components": "^4.3.2"
+  },
+  "dependencies": {
+    "react": "^16.9.0"
+  }
+}
