@@ -1,6 +1,19 @@
 {
-    "presets": ["@babel/preset-react", "@babel/preset-env"],
-    "ignore": [
-        "**/*.test.js"
-    ]
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-env"
+  ],
+  "env": {
+    "start": {
+      "presets": [
+        "react-hmre"
+      ]
+    },
+    "test": {
+      "presets": [
+        "@babel/preset-react",
+        "@babel/preset-env"
+      ]
+    }
+  }
 }

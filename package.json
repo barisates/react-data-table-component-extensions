@@ -4,11 +4,28 @@
   "description": "Export table data as a CSV or Excel file.",
   "main": "index.js",
   "scripts": {
-    "test": "react-scripts test",
-    "build": "./node_modules/.bin/babel src --out-file index.js",
-    "minify": "./node_modules/.bin/babel --minified src --out-file index.min.js ",
+    "start": "npm run storybook",
+    "test": "npm run lint && jest",
+    "build": "npm run lint && babel src --out-dir dist --copy-files",
+    "build:minify": "npm run lint && babel --minified src --out-dir dist --copy-files",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:css": "stylelint ./src/**/*.css",
+    "lint:js": "eslint ./src/**/*.js"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/(index|*.stories).js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file.mock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/style.mock.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -40,9 +57,22 @@
     "@storybook/addons": "^5.2.1",
     "@storybook/react": "^5.2.1",
     "babel-loader": "^8.0.6",
-    "react-scripts": "3.1.2",
     "react-data-table-component": "^3.5.1",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-react-app": "^5.0.1",
+    "eslint-plugin-flowtype": "^4.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.2",
+    "eslint-plugin-react": "^7.14.3",
+    "prop-types": "^15.7.2",
+    "react-dom": "latest",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "babel-eslint": "^10.0.3",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "jest": "^24.9.0"
   },
   "dependencies": {
     "react": "^16.9.0"
