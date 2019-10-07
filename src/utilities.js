@@ -1,3 +1,5 @@
+import { render, unmountComponentAtNode } from 'react-dom';
+
 const download = props => {
   const { content, type, name } = props;
 
@@ -57,12 +59,35 @@ const getProperty = (row, selector, format) => {
   }, row);
 };
 
+const dataRender = (data, header) => {
+  const rawData = [];
+  // get and render data
+  data.forEach(element => {
+    const row = [];
+    header.forEach(head => {
+      // cell: render component and get innerText
+      if (head.cell) {
+        const div = document.createElement('div');
+        render(head.cell(element), div);
+        row.push(div.innerText);
+        unmountComponentAtNode(div);
+      } else { // get property
+        row.push(getProperty(element, head.selector, head.format));
+      }
+    });
+
+    rawData.push(row);
+  });
+  return rawData;
+};
+
 const Utilities = {
   download,
   print,
   filter,
   getProperty,
   lower,
+  dataRender,
 };
 
 export default Utilities;

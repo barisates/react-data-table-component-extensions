@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ExportMethod = void 0;
+exports["default"] = void 0;
 
 var csv = function csv(data, header) {
   var contentHeader = header ? "".concat(header.map(function (e) {
@@ -35,18 +35,10 @@ var excel = function excel(data, header) {
 };
 
 var print = function print(data, header) {
-  var content = excel(data, header).content;
-  var style = '\
-    body, table { \
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; \
-        font-size:12px \
-    }\
-    table {\
-        width: 100%;\
-    }\
-    thead {\
-        font-weight: bold;\
-    }';
+  var _excel = excel(data, header),
+      content = _excel.content;
+
+  var style = '\n' + 'body, table { \n' + 'font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif; \n' + 'font-size:12px \n' + '}\n' + 'table {\n' + 'width: 100%;\n' + '}\n' + 'thead {\n' + 'font-weight: bold;\n' + '}';
   return "<style>".concat(style, "</style>").concat(content);
 };
 
@@ -55,4 +47,5 @@ var ExportMethod = {
   excel: excel,
   print: print
 };
-exports.ExportMethod = ExportMethod;
+var _default = ExportMethod;
+exports["default"] = _default;

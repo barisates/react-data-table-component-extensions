@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import './index.css';
 import { Filter, Export, Print } from './ui';
 import Utilities from './utilities';
-import { ExportMethod } from './export';
+import ExportMethod from './export';
 
 export class DataTableExtensions extends Component {
   constructor(props) {
@@ -37,24 +36,9 @@ export class DataTableExtensions extends Component {
   }
 
   onDataRender() {
-    const { data } = this.state;
+    const { constData } = this.state;
     // get and render data
-    data.forEach(element => {
-      const row = [];
-      this.raw.header.forEach(header => {
-        // cell: render component and get innerText
-        if (header.cell) {
-          const div = document.createElement('div');
-          render(header.cell(element), div);
-          row.push(div.innerText);
-          unmountComponentAtNode(div);
-        } else { // get property
-          row.push(Utilities.getProperty(element, header.selector, header.format));
-        }
-      });
-
-      this.raw.data.push(row);
-    });
+    this.raw.data = Utilities.dataRender(constData, this.raw.header);
   }
 
   onExport(e, type) {
@@ -108,7 +92,7 @@ export class DataTableExtensions extends Component {
             {/* eslint-disable-next-line react/destructuring-assignment */}
             {this.props.export && (
               <Export
-                className={(dropdown && 'drop')}
+                className={(dropdown ? 'drop' : '')}
                 onDropdown={() => this.setState(prevState => ({ dropdown: !prevState.dropdown }))}
                 onExport={(e, type) => this.onExport(e, type)}
               />

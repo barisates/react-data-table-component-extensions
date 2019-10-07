@@ -11,3 +11,4 @@ stories
 .travis.yml
 .stylelintignore
 .stylelintrc
+dist/__tests__/**/*.js

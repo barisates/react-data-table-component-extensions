@@ -40,7 +40,9 @@ export const Demo = () => {
   };
 
   return (
-    <DataTableExtensions {...tableData}>
+    <DataTableExtensions
+      {...tableData}
+    >
       <DataTable
         noHeader
         defaultSortField="id"

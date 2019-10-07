@@ -3,7 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getProperty = exports.filter = exports.lower = exports.print = exports.download = void 0;
+exports["default"] = void 0;
+
+var _reactDom = require("react-dom");
 
 var download = function download(props) {
   var content = props.content,
@@ -21,8 +23,6 @@ var download = function download(props) {
   document.getElementById(link.id).remove();
 };
 
-exports.download = download;
-
 var print = function print(table) {
   var printWindow = window.open();
   printWindow.document.write(table);
@@ -30,24 +30,18 @@ var print = function print(table) {
   printWindow.close();
 };
 
-exports.print = print;
-
 var lower = function lower(value) {
   return value.toString().toLowerCase();
 };
 
-exports.lower = lower;
-
 var filter = function filter(search, constant, data) {
   return constant.filter(function (item, index) {
-    var found = data[index].filter(function (filter) {
-      return lower(filter).indexOf(search) !== -1;
+    var found = data[index].filter(function (f) {
+      return lower(f).indexOf(search) !== -1;
     });
     return found.length > 0;
   });
 };
-
-exports.filter = filter;
 
 var getProperty = function getProperty(row, selector, format) {
   if (typeof selector !== 'string') {
@@ -78,4 +72,35 @@ var getProperty = function getProperty(row, selector, format) {
   }, row);
 };
 
-exports.getProperty = getProperty;
+var dataRender = function dataRender(data, header) {
+  var rawData = []; // get and render data
+
+  data.forEach(function (element) {
+    var row = [];
+    header.forEach(function (head) {
+      // cell: render component and get innerText
+      if (head.cell) {
+        var div = document.createElement('div');
+        (0, _reactDom.render)(head.cell(element), div);
+        row.push(div.innerText);
+        (0, _reactDom.unmountComponentAtNode)(div);
+      } else {
+        // get property
+        row.push(getProperty(element, head.selector, head.format));
+      }
+    });
+    rawData.push(row);
+  });
+  return rawData;
+};
+
+var Utilities = {
+  download: download,
+  print: print,
+  filter: filter,
+  getProperty: getProperty,
+  lower: lower,
+  dataRender: dataRender
+};
+var _default = Utilities;
+exports["default"] = _default;

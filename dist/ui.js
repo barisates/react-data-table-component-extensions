@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Print = exports.Export = exports.Filter = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var Filter = function Filter(props) {
   return _react["default"].createElement("div", {
@@ -29,12 +29,18 @@ var Filter = function Filter(props) {
 };
 
 exports.Filter = Filter;
+Filter.propTypes = {
+  onChange: _propTypes["default"].func
+};
+Filter.defaultProps = {
+  onChange: null
+};
 
 var Export = function Export(props) {
   var className = props.className,
       onDropdown = props.onDropdown,
       onExport = props.onExport;
-  return _react["default"].createElement(_react.Fragment, null, _react["default"].createElement("button", {
+  return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement("button", {
     type: "button",
     className: "download ".concat(className),
     onClick: function onClick() {
@@ -56,15 +62,33 @@ var Export = function Export(props) {
 };
 
 exports.Export = Export;
+Export.propTypes = {
+  className: _propTypes["default"].string,
+  onDropdown: _propTypes["default"].func,
+  onExport: _propTypes["default"].func
+};
+Export.defaultProps = {
+  className: '',
+  onDropdown: null,
+  onExport: null
+};
 
 var Print = function Print(props) {
-  return _react["default"].createElement("button", {
-    type: "button",
-    className: "print",
-    onClick: function onClick(e) {
-      return props.onClick();
-    }
-  });
+  return (// eslint-disable-next-line jsx-a11y/control-has-associated-label
+    _react["default"].createElement("button", {
+      type: "button",
+      className: "print",
+      onClick: function onClick() {
+        return props.onClick();
+      }
+    })
+  );
 };
 
 exports.Print = Print;
+Print.propTypes = {
+  onClick: _propTypes["default"].func
+};
+Print.defaultProps = {
+  onClick: null
+};

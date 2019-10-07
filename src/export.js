@@ -38,8 +38,10 @@ const print = (data, header) => {
   return `<style>${style}</style>${content}`;
 };
 
-export const ExportMethod = {
+const ExportMethod = {
   csv,
   excel,
   print,
 };
+
+export default ExportMethod;
