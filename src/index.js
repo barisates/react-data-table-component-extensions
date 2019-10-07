@@ -5,7 +5,7 @@ import { Filter, Export, Print } from './ui';
 import Utilities from './utilities';
 import ExportMethod from './export';
 
-export class DataTableExtensions extends Component {
+class DataTableExtensions extends Component {
   constructor(props) {
     super(props);
 
@@ -126,3 +126,5 @@ DataTableExtensions.defaultProps = {
   exportHeaders: false,
   children: null,
 };
+
+export default DataTableExtensions;

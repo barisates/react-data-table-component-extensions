@@ -1,7 +1,7 @@
 {
-  "name": "react-datatable-component-extensions",
+  "name": "react-data-table-component-extensions",
   "version": "1.0.0",
-  "description": "Export table data as a CSV or Excel file.",
+  "description": "Export table data as a CSV or Excel file, filter and print the data.",
   "main": "index.js",
   "scripts": {
     "start": "npm run storybook",
@@ -27,10 +27,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/barisates/react-datatable-component-extensions.git"
+    "url": "git+https://github.com/barisates/react-data-table-component-extensions.git"
   },
   "keywords": [
     "react",
+    "reactjs",
+    "react-component",
     "datatable",
     "extensions"
   ],
@@ -41,9 +43,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/barisates/react-datatable-component-extensions/issues"
+    "url": "https://github.com/barisates/react-data-table-component-extensions/issues"
   },
-  "homepage": "https://github.com/barisates/react-datatable-component-extensions#readme",
+  "homepage": "https://github.com/barisates/react-data-table-component-extensions#readme",
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
