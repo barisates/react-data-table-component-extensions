@@ -22,7 +22,7 @@ $ npm install react-data-table-component-extensions
 
 #### Usage
 
-**Live Demo [CodeSandbox](https://codesandbox.io/s/react-data-table-component-extensions-xmg9v "CodeSandbox")**
+**Live Demo [CodeSandbox](https://codesandbox.io/s/data-table-extensions-qxpv4?fontsize=14 "CodeSandbox")**
 
 
 ##### Features
