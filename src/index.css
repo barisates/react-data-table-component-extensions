@@ -25,6 +25,7 @@
   outline: none;
   padding: 4px;
   margin-left: 4px;
+  background-color: transparent;
 }
 
 .data-table-extensions > .data-table-extensions-filter > .filter-text::placeholder {

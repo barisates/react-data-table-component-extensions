@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DataTableExtensions = void 0;
+exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -181,7 +181,6 @@ function (_Component) {
   return DataTableExtensions;
 }(_react.Component);
 
-exports.DataTableExtensions = DataTableExtensions;
 DataTableExtensions.propTypes = {
   columns: _propTypes["default"].array,
   data: _propTypes["default"].array,
@@ -200,3 +199,5 @@ DataTableExtensions.defaultProps = {
   exportHeaders: false,
   children: null
 };
+var _default = DataTableExtensions;
+exports["default"] = _default;

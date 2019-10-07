@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DataTable from 'react-data-table-component';
-import { DataTableExtensions } from '../index';
+import DataTableExtensions from '../index';
 import { columns, data } from './ignore/constants';
 
 it('renders without crashing: null data', () => {
