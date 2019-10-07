@@ -27,7 +27,7 @@ Filter.defaultProps = {
 };
 
 export const Export = props => {
-  const { className, onDropdown, onExport } = props;
+  const { className, onDropdown, onClick } = props;
   return (
     <>
       {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
@@ -37,8 +37,8 @@ export const Export = props => {
         onClick={() => onDropdown()}
       />
       <div className={`dropdown ${className}`}>
-        <a href="#csv" onClick={e => onExport(e, 'csv')}>Csv File</a>
-        <a href="#excel" onClick={e => onExport(e, 'excel')}>Excel File</a>
+        <button type="button" onClick={e => onClick(e, 'csv')}>Csv File</button>
+        <button type="button" onClick={e => onClick(e, 'excel')}>Excel File</button>
       </div>
     </>
   );
@@ -47,13 +47,13 @@ export const Export = props => {
 Export.propTypes = {
   className: PropTypes.string,
   onDropdown: PropTypes.func,
-  onExport: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Export.defaultProps = {
   className: '',
   onDropdown: null,
-  onExport: null,
+  onClick: null,
 };
 
 export const Print = props => (

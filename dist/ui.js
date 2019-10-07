@@ -39,7 +39,7 @@ Filter.defaultProps = {
 var Export = function Export(props) {
   var className = props.className,
       onDropdown = props.onDropdown,
-      onExport = props.onExport;
+      _onClick = props.onClick;
   return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement("button", {
     type: "button",
     className: "download ".concat(className),
@@ -48,15 +48,15 @@ var Export = function Export(props) {
     }
   }), _react["default"].createElement("div", {
     className: "dropdown ".concat(className)
-  }, _react["default"].createElement("a", {
-    href: "#csv",
+  }, _react["default"].createElement("button", {
+    type: "button",
     onClick: function onClick(e) {
-      return onExport(e, 'csv');
+      return _onClick(e, 'csv');
     }
-  }, "Csv File"), _react["default"].createElement("a", {
-    href: "#excel",
+  }, "Csv File"), _react["default"].createElement("button", {
+    type: "button",
     onClick: function onClick(e) {
-      return onExport(e, 'excel');
+      return _onClick(e, 'excel');
     }
   }, "Excel File")));
 };
@@ -65,12 +65,12 @@ exports.Export = Export;
 Export.propTypes = {
   className: _propTypes["default"].string,
   onDropdown: _propTypes["default"].func,
-  onExport: _propTypes["default"].func
+  onClick: _propTypes["default"].func
 };
 Export.defaultProps = {
   className: '',
   onDropdown: null,
-  onExport: null
+  onClick: null
 };
 
 var Print = function Print(props) {

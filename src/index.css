@@ -143,16 +143,21 @@
   }
 }
 
-.data-table-extensions > .data-table-extensions-action > .dropdown a {
+.data-table-extensions > .data-table-extensions-action > .dropdown button {
   display: block;
   text-decoration: none;
   white-space: nowrap;
-  font-size: 14px;
   font-size: 13px;
   color: #157efb;
   padding: 4px 6px;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
 }
 
-.data-table-extensions > .data-table-extensions-action > .dropdown a:hover {
+.data-table-extensions > .data-table-extensions-action > .dropdown button:hover {
   background-color: #fcfcfc;
 }

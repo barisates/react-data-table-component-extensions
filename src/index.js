@@ -94,7 +94,7 @@ class DataTableExtensions extends Component {
               <Export
                 className={(dropdown ? 'drop' : '')}
                 onDropdown={() => this.setState(prevState => ({ dropdown: !prevState.dropdown }))}
-                onExport={(e, type) => this.onExport(e, type)}
+                onClick={(e, type) => this.onExport(e, type)}
               />
             )}
             {print && <Print onClick={() => this.onPrint()} />}

@@ -164,7 +164,7 @@ function (_Component) {
             };
           });
         },
-        onExport: function onExport(e, type) {
+        onClick: function onClick(e, type) {
           return _this3.onExport(e, type);
         }
       }), print && _react["default"].createElement(_ui.Print, {
