@@ -35,6 +35,19 @@ class DataTableExtensions extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    const { columns, data } = this.props;
+
+    if (prevProps.columns !== columns || prevProps.data !== data) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        columns,
+        data,
+        constData: data,
+      });
+    }
+  }
+
   onDataRender() {
     const { constData } = this.state;
     // get and render data

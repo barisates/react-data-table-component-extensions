@@ -81,6 +81,22 @@ function (_Component) {
       });
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this$props = this.props,
+          columns = _this$props.columns,
+          data = _this$props.data;
+
+      if (prevProps.columns !== columns || prevProps.data !== data) {
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          columns: columns,
+          data: data,
+          constData: data
+        });
+      }
+    }
+  }, {
     key: "onDataRender",
     value: function onDataRender() {
       var constData = this.state.constData; // get and render data
@@ -143,10 +159,10 @@ function (_Component) {
           dropdown = _this$state.dropdown,
           columns = _this$state.columns,
           data = _this$state.data;
-      var _this$props = this.props,
-          filter = _this$props.filter,
-          print = _this$props.print,
-          children = _this$props.children;
+      var _this$props2 = this.props,
+          filter = _this$props2.filter,
+          print = _this$props2.print,
+          children = _this$props2.children;
       return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement("div", {
         className: "data-table-extensions"
       }, filter && _react["default"].createElement(_ui.Filter, {
