@@ -70,7 +70,8 @@ const dataRender = (data, header) => {
       // Export Cell
       if (head.cellExport) {
         const exportData = head.cellExport(element);
-        row.push(`<table><tbody>${Object.keys(exportData).map(key => `<tr><td>${key}</td><td>${exportData[key].toString()}</td></tr>`).join('')}</tbody></table>`);
+        row.push(exportData);
+        // row.push(`<table><tbody>${Object.keys(exportData).map(key => `<tr><td>${key}</td><td>${exportData[key].toString()}</td></tr>`).join('')}</tbody></table>`);
       } else if (head.cell) { // cell: render component and get innerText
         const div = document.createElement('div');
         render(head.cell(element), div);
@@ -86,6 +87,35 @@ const dataRender = (data, header) => {
   return rawData;
 };
 
+const concat = {
+  csv: row => {
+    const items = [];
+
+    row.forEach(item => {
+      if (typeof item === 'object') {
+        items.push(Object.keys(item).map(key => `${key}: ${item[key]}`).join(';'));
+      } else {
+        items.push(item);
+      }
+    });
+
+    return items.join(';');
+  },
+  excel: row => {
+    const items = [];
+
+    row.forEach(item => {
+      if (typeof item === 'object') {
+        items.push(`<table><tbody>${Object.keys(item).map(key => `<tr><td>${key}</td><td>${item[key].toString()}</td></tr>`).join('')}</tbody></table>`);
+      } else {
+        items.push(item);
+      }
+    });
+
+    return `<tr><td>${items.join('</td><td>')}</td></tr>`;
+  },
+};
+
 const Utilities = {
   download,
   print,
@@ -93,6 +123,7 @@ const Utilities = {
   getProperty,
   lower,
   dataRender,
+  concat,
 };
 
 export default Utilities;

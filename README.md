@@ -127,6 +127,10 @@ Descriptions and configuration settings for component properties.
 | print | string | no | true | Enable print button |
 | exportHeaders | bool | no | false | Exports data with table headers |
 
+##### Column Properties
+| Property | Type | Required | Description |
+|--------------------------|---------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| cellExport | func | no | Export configuration `row => ({Title: row.Title, Example: row.Example})` |
 ------------
 #### Author
 

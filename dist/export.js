@@ -5,12 +5,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _utilities = _interopRequireDefault(require("./utilities"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 var csv = function csv(data, header) {
   var contentHeader = header ? "".concat(header.map(function (e) {
     return e.name;
   }).join(';'), "\n") : '';
   var content = "".concat(contentHeader).concat(data.map(function (e) {
-    return e.join(';');
+    return _utilities["default"].concat.csv(e);
   }).join('\n'));
   return {
     content: content,
@@ -24,7 +28,7 @@ var excel = function excel(data, header) {
     return e.name;
   }).join('</td><td>'), "</td><tr></thead>") : '';
   var contentBody = data.map(function (e) {
-    return "<tr><td>".concat(e.join('</td><td>'), "</td></tr>");
+    return _utilities["default"].concat.excel(e);
   });
   var content = "<table>".concat(contentHeader, "<tbody>").concat(contentBody.join(''), "</tbody></table>");
   return {

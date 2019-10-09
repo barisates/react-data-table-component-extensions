@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _reactDom = require("react-dom");
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var download = function download(props) {
   var content = props.content,
       type = props.type,
@@ -78,8 +80,12 @@ var dataRender = function dataRender(data, header) {
   data.forEach(function (element) {
     var row = [];
     header.forEach(function (head) {
-      // cell: render component and get innerText
-      if (head.cell) {
+      // Export Cell
+      if (head.cellExport) {
+        var exportData = head.cellExport(element);
+        row.push(exportData); // row.push(`<table><tbody>${Object.keys(exportData).map(key => `<tr><td>${key}</td><td>${exportData[key].toString()}</td></tr>`).join('')}</tbody></table>`);
+      } else if (head.cell) {
+        // cell: render component and get innerText
         var div = document.createElement('div');
         (0, _reactDom.render)(head.cell(element), div);
         row.push(div.innerText);
@@ -94,13 +100,42 @@ var dataRender = function dataRender(data, header) {
   return rawData;
 };
 
+var concat = {
+  csv: function csv(row) {
+    var items = [];
+    row.forEach(function (item) {
+      if (_typeof(item) === 'object') {
+        items.push(Object.keys(item).map(function (key) {
+          return "".concat(key, ": ").concat(item[key]);
+        }).join(';'));
+      } else {
+        items.push(item);
+      }
+    });
+    return items.join(';');
+  },
+  excel: function excel(row) {
+    var items = [];
+    row.forEach(function (item) {
+      if (_typeof(item) === 'object') {
+        items.push("<table><tbody>".concat(Object.keys(item).map(function (key) {
+          return "<tr><td>".concat(key, "</td><td>").concat(item[key].toString(), "</td></tr>");
+        }).join(''), "</tbody></table>"));
+      } else {
+        items.push(item);
+      }
+    });
+    return "<tr><td>".concat(items.join('</td><td>'), "</td></tr>");
+  }
+};
 var Utilities = {
   download: download,
   print: print,
   filter: filter,
   getProperty: getProperty,
   lower: lower,
-  dataRender: dataRender
+  dataRender: dataRender,
+  concat: concat
 };
 var _default = Utilities;
 exports["default"] = _default;

@@ -1,6 +1,8 @@
+import Utilities from './utilities';
+
 const csv = (data, header) => {
   const contentHeader = (header ? `${header.map(e => e.name).join(';')}\n` : '');
-  const content = `${contentHeader}${data.map(e => e.join(';')).join('\n')}`;
+  const content = `${contentHeader}${data.map(e => Utilities.concat.csv(e)).join('\n')}`;
 
   return {
     content,
@@ -11,7 +13,7 @@ const csv = (data, header) => {
 
 const excel = (data, header) => {
   const contentHeader = (header ? `<thead><tr><td>${header.map(e => e.name).join('</td><td>')}</td><tr></thead>` : '');
-  const contentBody = data.map(e => `<tr><td>${e.join('</td><td>')}</td></tr>`);
+  const contentBody = data.map(e => Utilities.concat.excel(e));
   const content = `<table>${contentHeader}<tbody>${contentBody.join('')}</tbody></table>`;
 
   return {
