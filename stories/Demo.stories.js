@@ -13,6 +13,13 @@ const columns = [
     name: 'Title',
     selector: 'title',
     sortable: true,
+    cellExport: d => (
+      {
+        Title: d.title,
+        Runtime: d.runtime,
+        Actors: d.actors,
+      }
+    ),
   },
   {
     name: 'Director',

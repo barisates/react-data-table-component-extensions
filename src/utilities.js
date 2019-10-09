@@ -67,8 +67,11 @@ const dataRender = (data, header) => {
   data.forEach(element => {
     const row = [];
     header.forEach(head => {
-      // cell: render component and get innerText
-      if (head.cell) {
+      // Export Cell
+      if (head.cellExport) {
+        const exportData = head.cellExport(element);
+        row.push(`<table><tbody>${Object.keys(exportData).map(key => `<tr><td>${key}</td><td>${exportData[key].toString()}</td></tr>`).join('')}</tbody></table>`);
+      } else if (head.cell) { // cell: render component and get innerText
         const div = document.createElement('div');
         render(head.cell(element), div);
         row.push(div.innerText);
