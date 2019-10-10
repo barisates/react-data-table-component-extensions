@@ -119,7 +119,7 @@ var concat = {
     row.forEach(function (item) {
       if (_typeof(item) === 'object') {
         items.push("<table><tbody>".concat(Object.keys(item).map(function (key) {
-          return "<tr><td>".concat(key, "</td><td>").concat(item[key].toString(), "</td></tr>");
+          return "<tr><td>".concat(key, "</td><td>").concat(item[key], "</td></tr>");
         }).join(''), "</tbody></table>"));
       } else {
         items.push(item);

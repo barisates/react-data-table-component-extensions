@@ -106,7 +106,7 @@ const concat = {
 
     row.forEach(item => {
       if (typeof item === 'object') {
-        items.push(`<table><tbody>${Object.keys(item).map(key => `<tr><td>${key}</td><td>${item[key].toString()}</td></tr>`).join('')}</tbody></table>`);
+        items.push(`<table><tbody>${Object.keys(item).map(key => `<tr><td>${key}</td><td>${item[key]}</td></tr>`).join('')}</tbody></table>`);
       } else {
         items.push(item);
       }
