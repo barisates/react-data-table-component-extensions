@@ -125,7 +125,7 @@ var concat = {
         items.push(item);
       }
     });
-    return "<tr><td>".concat(items.join('</td><td>'), "</td></tr>");
+    return "<tr style=\"border-bottom:1px solid #000;\"><td style=\"border-right:1px solid #000;\">".concat(items.join('</td><td style="border-right:1px solid #000;">'), "</td></tr>");
   }
 };
 var Utilities = {

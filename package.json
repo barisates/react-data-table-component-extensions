@@ -1,6 +1,6 @@
 {
   "name": "react-data-table-component-extensions",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Export table data as a CSV or Excel file, filter and print the data.",
   "main": "dist/index.js",
   "scripts": {

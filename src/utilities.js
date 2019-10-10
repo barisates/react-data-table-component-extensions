@@ -112,7 +112,7 @@ const concat = {
       }
     });
 
-    return `<tr><td>${items.join('</td><td>')}</td></tr>`;
+    return `<tr style="border-bottom:1px solid #000;"><td style="border-right:1px solid #000;">${items.join('</td><td style="border-right:1px solid #000;">')}</td></tr>`;
   },
 };
 
