@@ -122,9 +122,9 @@ Descriptions and configuration settings for component properties.
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | columns | array<Columns> | yes | [] | Table column configuration |
 | data | array<Object> | no | [] | Table data |
-| filter | string | no | true | Enable input filter |
-| export | string | no | true | Enable export button |
-| print | string | no | true | Enable print button |
+| filter | bool | no | true | Enable input filter |
+| export | bool | no | true | Enable export button |
+| print | bool | no | true | Enable print button |
 | exportHeaders | bool | no | false | Exports data with table headers |
 
 ##### Column Properties
