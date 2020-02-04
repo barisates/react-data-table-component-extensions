@@ -38,10 +38,9 @@ var lower = function lower(value) {
 
 var filter = function filter(search, constant, data) {
   return constant.filter(function (item, index) {
-    var found = data[index].filter(function (f) {
-      return lower(f).indexOf(search) !== -1;
-    });
-    return found.length > 0;
+    var value = Object.values(data[index]).join();
+    return lower(value).indexOf(search) !== -1; // const found = data[index].filter(f => (lower(f).indexOf(search) !== -1));
+    // return (found.length > 0);
   });
 };
 

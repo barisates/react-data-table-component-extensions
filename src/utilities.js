@@ -27,11 +27,12 @@ const print = table => {
 
 const lower = value => (value.toString().toLowerCase());
 
-const filter = (search, constant, data) =>
-  (constant.filter((item, index) => {
-    const found = data[index].filter(f => (lower(f).indexOf(search) !== -1));
-    return (found.length > 0);
-  }));
+const filter = (search, constant, data) => (constant.filter((item, index) => {
+  const value = Object.values(data[index]).join();
+  return (lower(value).indexOf(search) !== -1);
+  // const found = data[index].filter(f => (lower(f).indexOf(search) !== -1));
+  // return (found.length > 0);
+}));
 
 const getProperty = (row, selector, format) => {
   if (typeof selector !== 'string') {
