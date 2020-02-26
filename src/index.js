@@ -16,6 +16,7 @@ class DataTableExtensions extends Component {
       columns,
       data,
       constData: data,
+      filter: '',
     };
 
     this.raw = {
@@ -37,6 +38,7 @@ class DataTableExtensions extends Component {
 
   componentDidUpdate(prevProps) {
     const { columns, data } = this.props;
+    const { filter } = this.state;
 
     if (prevProps.columns !== columns || prevProps.data !== data) {
       // eslint-disable-next-line react/no-did-update-set-state
@@ -44,6 +46,14 @@ class DataTableExtensions extends Component {
         columns,
         data,
         constData: data,
+      }, () => {
+        setTimeout(() => {
+          this.onDataRender();
+        }, 500);
+
+        if (filter.length > 2) {
+          this.onFilter(filter);
+        }
       });
     }
   }
@@ -69,20 +79,18 @@ class DataTableExtensions extends Component {
     e.preventDefault();
   }
 
-  onFilter(e) {
-    const value = Utilities.lower(e.target.value);
+  onFilter(text) {
+    const value = Utilities.lower(text);
 
     const { constData } = this.state;
 
     let filtered = constData;
 
-    if (value.length > 1) {
-      this.onDataRender();
-
+    if (value.length > 2) {
       filtered = Utilities.filter(value, constData, this.raw.data);
     }
 
-    this.setState({ data: filtered });
+    this.setState({ data: filtered, filter: value });
   }
 
   onPrint() {
@@ -100,7 +108,7 @@ class DataTableExtensions extends Component {
     return (
       <>
         <div className="data-table-extensions">
-          {filter && <Filter onChange={e => this.onFilter(e)} />}
+          {filter && <Filter onChange={e => this.onFilter(e.target.value)} />}
           <div className="data-table-extensions-action">
             {/* eslint-disable-next-line react/destructuring-assignment */}
             {this.props.export && (
