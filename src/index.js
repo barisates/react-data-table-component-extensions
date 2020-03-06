@@ -47,6 +47,7 @@ class DataTableExtensions extends Component {
         data,
         constData: data,
       }, () => {
+        this.checkHeader();
         setTimeout(() => {
           this.onDataRender();
         }, 500);
@@ -100,6 +101,18 @@ class DataTableExtensions extends Component {
     const table = ExportMethod.print(data, header);
 
     Utilities.print(table);
+  }
+
+  checkHeader() {
+    const { columns } = this.state;
+    if (columns.length !== this.raw.header) {
+      this.raw.header = [];
+      columns.forEach(element => {
+        if (element.export !== false) {
+          this.raw.header.push(element);
+        }
+      });
+    }
   }
 
   render() {
