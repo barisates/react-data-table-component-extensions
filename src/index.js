@@ -105,7 +105,7 @@ class DataTableExtensions extends Component {
 
   checkHeader() {
     const { columns } = this.state;
-    if (columns.length !== this.raw.header) {
+    if (columns.length !== this.raw.header.length) {
       this.raw.header = [];
       columns.forEach(element => {
         if (element.export !== false) {
