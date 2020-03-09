@@ -36,9 +36,9 @@ var lower = function lower(value) {
   return value.toString().toLowerCase();
 };
 
-var filter = function filter(search, constant, data) {
+var filter = function filter(search, constant, data, filterHidden) {
   return constant.filter(function (item, index) {
-    var value = Object.values(data[index]).join();
+    var value = (filterHidden ? Object.values(item) : Object.values(data[index])).join();
     return lower(value).indexOf(search) !== -1; // const found = data[index].filter(f => (lower(f).indexOf(search) !== -1));
     // return (found.length > 0);
   });

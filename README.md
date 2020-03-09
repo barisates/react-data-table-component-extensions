@@ -123,9 +123,11 @@ Descriptions and configuration settings for component properties.
 | columns | array<Columns> | yes | [] | Table column configuration |
 | data | array<Object> | no | [] | Table data |
 | filter | bool | no | true | Enable input filter |
+| **filterHidden** | bool | no | true | Filter hidden fields |
 | export | bool | no | true | Enable export button |
 | print | bool | no | true | Enable print button |
 | exportHeaders | bool | no | false | Exports data with table headers |
+
 
 ##### Column Properties
 | Property | Type | Required | Description |

@@ -48,9 +48,6 @@ class DataTableExtensions extends Component {
         constData: data,
       }, () => {
         this.checkHeader();
-        setTimeout(() => {
-          this.onDataRender();
-        }, 500);
 
         if (filter.length > 2) {
           this.onFilter(filter);
@@ -84,11 +81,16 @@ class DataTableExtensions extends Component {
     const value = Utilities.lower(text);
 
     const { constData } = this.state;
+    const { filterHidden } = this.props;
 
     let filtered = constData;
 
     if (value.length > 2) {
-      filtered = Utilities.filter(value, constData, this.raw.data);
+      if (!filterHidden) {
+        this.onDataRender();
+      }
+
+      filtered = Utilities.filter(value, constData, this.raw.data, filterHidden);
     }
 
     this.setState({ data: filtered, filter: value });
@@ -149,6 +151,7 @@ DataTableExtensions.propTypes = {
   print: PropTypes.bool,
   exportHeaders: PropTypes.bool,
   children: PropTypes.node,
+  filterHidden: PropTypes.bool,
 };
 
 DataTableExtensions.defaultProps = {
@@ -159,6 +162,7 @@ DataTableExtensions.defaultProps = {
   print: true,
   exportHeaders: false,
   children: null,
+  filterHidden: true,
 };
 
 export default DataTableExtensions;

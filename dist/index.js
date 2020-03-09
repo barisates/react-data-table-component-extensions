@@ -98,9 +98,7 @@ function (_Component) {
           data: data,
           constData: data
         }, function () {
-          setTimeout(function () {
-            _this3.onDataRender();
-          }, 500);
+          _this3.checkHeader();
 
           if (filter.length > 2) {
             _this3.onFilter(filter);
@@ -139,10 +137,15 @@ function (_Component) {
       var value = _utilities["default"].lower(text);
 
       var constData = this.state.constData;
+      var filterHidden = this.props.filterHidden;
       var filtered = constData;
 
       if (value.length > 2) {
-        filtered = _utilities["default"].filter(value, constData, this.raw.data);
+        if (!filterHidden) {
+          this.onDataRender();
+        }
+
+        filtered = _utilities["default"].filter(value, constData, this.raw.data, filterHidden);
       }
 
       this.setState({
@@ -163,9 +166,25 @@ function (_Component) {
       _utilities["default"].print(table);
     }
   }, {
+    key: "checkHeader",
+    value: function checkHeader() {
+      var _this4 = this;
+
+      var columns = this.state.columns;
+
+      if (columns.length !== this.raw.header.length) {
+        this.raw.header = [];
+        columns.forEach(function (element) {
+          if (element["export"] !== false) {
+            _this4.raw.header.push(element);
+          }
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var _this$state = this.state,
           dropdown = _this$state.dropdown,
@@ -179,25 +198,25 @@ function (_Component) {
         className: "data-table-extensions"
       }, filter && _react["default"].createElement(_ui.Filter, {
         onChange: function onChange(e) {
-          return _this4.onFilter(e.target.value);
+          return _this5.onFilter(e.target.value);
         }
       }), _react["default"].createElement("div", {
         className: "data-table-extensions-action"
       }, this.props["export"] && _react["default"].createElement(_ui.Export, {
         className: dropdown ? 'drop' : '',
         onDropdown: function onDropdown() {
-          return _this4.setState(function (prevState) {
+          return _this5.setState(function (prevState) {
             return {
               dropdown: !prevState.dropdown
             };
           });
         },
         onClick: function onClick(e, type) {
-          return _this4.onExport(e, type);
+          return _this5.onExport(e, type);
         }
       }), print && _react["default"].createElement(_ui.Print, {
         onClick: function onClick() {
-          return _this4.onPrint();
+          return _this5.onPrint();
         }
       }))), _react["default"].cloneElement(children, {
         columns: columns,
@@ -216,7 +235,8 @@ DataTableExtensions.propTypes = {
   "export": _propTypes["default"].bool,
   print: _propTypes["default"].bool,
   exportHeaders: _propTypes["default"].bool,
-  children: _propTypes["default"].node
+  children: _propTypes["default"].node,
+  filterHidden: _propTypes["default"].bool
 };
 DataTableExtensions.defaultProps = {
   columns: [],
@@ -225,7 +245,8 @@ DataTableExtensions.defaultProps = {
   "export": true,
   print: true,
   exportHeaders: false,
-  children: null
+  children: null,
+  filterHidden: true
 };
 var _default = DataTableExtensions;
 exports["default"] = _default;
