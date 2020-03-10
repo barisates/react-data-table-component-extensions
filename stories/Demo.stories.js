@@ -39,7 +39,6 @@ const columns = [
   },
 ];
 
-
 export const Demo = () => {
   const tableData = {
     columns,

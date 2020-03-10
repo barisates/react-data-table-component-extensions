@@ -27,9 +27,10 @@ const print = table => {
 
 const lower = value => (value.toString().toLowerCase());
 
-const filter = (search, constant, data, filterHidden) => (constant.filter((item, index) => {
-  const value = (filterHidden ? Object.values(item) : Object.values(data[index])).join();
+const objectValues = item => Object.values(item).map(obj => (typeof (obj) === 'object' ? objectValues(obj) : obj));
 
+const filter = (search, constant, data, filterHidden) => (constant.filter((item, index) => {
+  const value = (filterHidden ? objectValues(item) : Object.values(data[index])).join();
   return (lower(value).indexOf(search) !== -1);
   // const found = data[index].filter(f => (lower(f).indexOf(search) !== -1));
   // return (found.length > 0);
