@@ -27,7 +27,7 @@ const print = table => {
 
 const lower = value => (value.toString().toLowerCase());
 
-const objectValues = item => Object.values(item).map(obj => (typeof (obj) === 'object' ? objectValues(obj) : obj));
+const objectValues = item => Object.values(item).map(obj => (typeof (obj) === 'object' && obj !== null ? objectValues(obj) : obj));
 
 const filter = (search, constant, data, filterHidden) => (constant.filter((item, index) => {
   const value = (filterHidden ? objectValues(item) : Object.values(data[index])).join();

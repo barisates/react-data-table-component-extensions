@@ -38,7 +38,7 @@ var lower = function lower(value) {
 
 var objectValues = function objectValues(item) {
   return Object.values(item).map(function (obj) {
-    return _typeof(obj) === 'object' ? objectValues(obj) : obj;
+    return _typeof(obj) === 'object' && obj !== null ? objectValues(obj) : obj;
   });
 };
 
