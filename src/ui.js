@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Filter = props => (
+export const Filter = ({ onChange, placeholder }) => (
   <div className="data-table-extensions-filter">
     {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
     <label
@@ -12,14 +12,15 @@ export const Filter = props => (
       type="text"
       name="filterDataTable"
       className="filter-text"
-      placeholder="Filter Table"
-      onChange={e => props.onChange(e)}
+      placeholder={placeholder}
+      onChange={e => onChange(e)}
     />
   </div>
 );
 
 Filter.propTypes = {
   onChange: PropTypes.func,
+  placeholder: PropTypes.string.isRequired,
 };
 
 Filter.defaultProps = {

@@ -48,6 +48,7 @@ export const Demo = () => {
   return (
     <DataTableExtensions
       {...tableData}
+      filterPlaceHolder="Dayımlar"
     >
       <DataTable
         noHeader

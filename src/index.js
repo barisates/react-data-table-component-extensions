@@ -119,11 +119,11 @@ class DataTableExtensions extends Component {
 
   render() {
     const { dropdown, columns, data } = this.state;
-    const { filter, print, children } = this.props;
+    const { filter, print, children, filterPlaceholder } = this.props;
     return (
       <>
         <div className="data-table-extensions">
-          {filter && <Filter onChange={e => this.onFilter(e.target.value)} />}
+          {filter && <Filter onChange={e => this.onFilter(e.target.value)} placeholder={filterPlaceholder} />}
           <div className="data-table-extensions-action">
             {/* eslint-disable-next-line react/destructuring-assignment */}
             {this.props.export && (
@@ -147,6 +147,7 @@ DataTableExtensions.propTypes = {
   columns: PropTypes.array,
   data: PropTypes.array,
   filter: PropTypes.bool,
+  filterPlaceholder: PropTypes.string,
   export: PropTypes.bool,
   print: PropTypes.bool,
   exportHeaders: PropTypes.bool,
@@ -163,6 +164,7 @@ DataTableExtensions.defaultProps = {
   exportHeaders: false,
   children: null,
   filterHidden: true,
+  filterPlaceholder: 'Filter Table',
 };
 
 export default DataTableExtensions;

@@ -11,7 +11,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var Filter = function Filter(props) {
+var Filter = function Filter(_ref) {
+  var _onChange = _ref.onChange,
+      placeholder = _ref.placeholder;
   return _react["default"].createElement("div", {
     className: "data-table-extensions-filter"
   }, _react["default"].createElement("label", {
@@ -21,16 +23,17 @@ var Filter = function Filter(props) {
     type: "text",
     name: "filterDataTable",
     className: "filter-text",
-    placeholder: "Filter Table",
+    placeholder: placeholder,
     onChange: function onChange(e) {
-      return props.onChange(e);
+      return _onChange(e);
     }
   }));
 };
 
 exports.Filter = Filter;
 Filter.propTypes = {
-  onChange: _propTypes["default"].func
+  onChange: _propTypes["default"].func,
+  placeholder: _propTypes["default"].string.isRequired
 };
 Filter.defaultProps = {
   onChange: null

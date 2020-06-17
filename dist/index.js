@@ -193,13 +193,15 @@ function (_Component) {
       var _this$props2 = this.props,
           filter = _this$props2.filter,
           print = _this$props2.print,
-          children = _this$props2.children;
+          children = _this$props2.children,
+          filterPlaceholder = _this$props2.filterPlaceholder;
       return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement("div", {
         className: "data-table-extensions"
       }, filter && _react["default"].createElement(_ui.Filter, {
         onChange: function onChange(e) {
           return _this5.onFilter(e.target.value);
-        }
+        },
+        placeholder: filterPlaceholder
       }), _react["default"].createElement("div", {
         className: "data-table-extensions-action"
       }, this.props["export"] && _react["default"].createElement(_ui.Export, {
@@ -232,6 +234,7 @@ DataTableExtensions.propTypes = {
   columns: _propTypes["default"].array,
   data: _propTypes["default"].array,
   filter: _propTypes["default"].bool,
+  filterPlaceholder: _propTypes["default"].string,
   "export": _propTypes["default"].bool,
   print: _propTypes["default"].bool,
   exportHeaders: _propTypes["default"].bool,
@@ -246,7 +249,8 @@ DataTableExtensions.defaultProps = {
   print: true,
   exportHeaders: false,
   children: null,
-  filterHidden: true
+  filterHidden: true,
+  filterPlaceholder: 'Filter Table'
 };
 var _default = DataTableExtensions;
 exports["default"] = _default;
