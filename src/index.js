@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
 import { Filter, Export, Print } from './ui';
 import Utilities from './utilities';
 import ExportMethod from './export';
