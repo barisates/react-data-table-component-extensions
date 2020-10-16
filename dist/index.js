@@ -9,8 +9,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-require("./index.css");
-
 var _ui = require("./ui");
 
 var _utilities = _interopRequireDefault(require("./utilities"));
