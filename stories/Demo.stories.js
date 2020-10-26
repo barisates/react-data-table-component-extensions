@@ -3,6 +3,7 @@ import DataTable from 'react-data-table-component';
 import data from './constants/test-data';
 import './css/demo.css';
 import DataTableExtensions from '../src';
+import '../src/index.css';
 
 export default {
   title: 'Demo',
