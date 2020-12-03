@@ -46,7 +46,7 @@ export const data = [
       'Drama',
       'Music',
     ],
-    director: 'Francis Ford Coppola',
+    director: null,
     actors: 'Richard Gere, Gregory Hines, Diane Lane, Lonette McKee',
     plot: 'The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.',
     posterUrl: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5ODAyNzA4OV5BMl5BanBnXkFtZTcwNzYwNTIzNA@@._V1_SX300.jpg',

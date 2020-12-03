@@ -95,7 +95,7 @@ const concat = {
     const items = [];
 
     row.forEach(item => {
-      if (typeof item === 'object') {
+      if (typeof item === 'object' && item !== null) {
         items.push(Object.keys(item).map(key => `${key}: ${item[key]}`).join(';'));
       } else {
         items.push(item);
@@ -108,7 +108,7 @@ const concat = {
     const items = [];
 
     row.forEach(item => {
-      if (typeof item === 'object') {
+      if (typeof item === 'object' && item !== null) {
         items.push(`<table><tbody>${Object.keys(item).map(key => `<tr><td>${key}</td><td>${item[key]}</td></tr>`).join('')}</tbody></table>`);
       } else {
         items.push(item);
