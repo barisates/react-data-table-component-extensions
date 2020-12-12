@@ -109,7 +109,7 @@ var concat = {
   csv: function csv(row) {
     var items = [];
     row.forEach(function (item) {
-      if (_typeof(item) === 'object') {
+      if (_typeof(item) === 'object' && item !== null) {
         items.push(Object.keys(item).map(function (key) {
           return "".concat(key, ": ").concat(item[key]);
         }).join(';'));
@@ -122,7 +122,7 @@ var concat = {
   excel: function excel(row) {
     var items = [];
     row.forEach(function (item) {
-      if (_typeof(item) === 'object') {
+      if (_typeof(item) === 'object' && item !== null) {
         items.push("<table><tbody>".concat(Object.keys(item).map(function (key) {
           return "<tr><td>".concat(key, "</td><td>").concat(item[key], "</td></tr>");
         }).join(''), "</tbody></table>"));
