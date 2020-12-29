@@ -31,7 +31,10 @@ const objectValues = item => Object.values(item).map(obj => (typeof (obj) === 'o
 
 const filter = (search, constant, data, filterHidden) => (constant.filter((item, index) => {
   const value = (filterHidden ? objectValues(item) : Object.values(data[index])).join();
-  return (lower(value).indexOf(search) !== -1);
+  const searchSplit = search.split(' ').filter(filterItem => filterItem !== '');
+
+  return searchSplit.filter(filterItem => lower(value).indexOf(filterItem.trim()) !== -1).length === searchSplit.length;
+  // return (lower(value).indexOf(search.trim()) !== -1);
   // const found = data[index].filter(f => (lower(f).indexOf(search) !== -1));
   // return (found.length > 0);
 }));

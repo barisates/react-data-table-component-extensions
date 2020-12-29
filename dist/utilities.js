@@ -45,7 +45,13 @@ var objectValues = function objectValues(item) {
 var filter = function filter(search, constant, data, filterHidden) {
   return constant.filter(function (item, index) {
     var value = (filterHidden ? objectValues(item) : Object.values(data[index])).join();
-    return lower(value).indexOf(search) !== -1; // const found = data[index].filter(f => (lower(f).indexOf(search) !== -1));
+    var searchSplit = search.split(' ').filter(function (filterItem) {
+      return filterItem !== '';
+    });
+    return searchSplit.filter(function (filterItem) {
+      return lower(value).indexOf(filterItem.trim()) !== -1;
+    }).length === searchSplit.length; // return (lower(value).indexOf(search.trim()) !== -1);
+    // const found = data[index].filter(f => (lower(f).indexOf(search) !== -1));
     // return (found.length > 0);
   });
 };
