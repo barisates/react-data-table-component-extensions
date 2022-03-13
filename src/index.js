@@ -85,13 +85,11 @@ class DataTableExtensions extends Component {
     const { filterHidden } = this.props;
 
     let filtered = constData;
-    debugger;
     if (value.length > filterDigit) {
       if (!filterHidden) {
         this.onDataRender();
       }
       filtered = Utilities.filter(value, constData, this.raw.data, filterHidden);
-      console.log(filtered);
     }
 
     this.setState({ data: filtered, filter: value });
