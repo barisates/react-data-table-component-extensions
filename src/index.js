@@ -8,7 +8,7 @@ class DataTableExtensions extends Component {
   constructor(props) {
     super(props);
 
-    const { columns, data } = props;
+    const { columns, data, filterDigit } = props;
 
     this.state = {
       dropdown: false,
@@ -16,6 +16,7 @@ class DataTableExtensions extends Component {
       data,
       constData: data,
       filter: '',
+      filterDigit,
     };
 
     this.raw = {
@@ -36,7 +37,7 @@ class DataTableExtensions extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { columns, data } = this.props;
+    const { columns, data, filterDigit } = this.props;
     const { filter } = this.state;
 
     if (prevProps.columns !== columns || prevProps.data !== data) {
@@ -44,11 +45,12 @@ class DataTableExtensions extends Component {
       this.setState({
         columns,
         data,
+        filterDigit,
         constData: data,
       }, () => {
         this.checkHeader();
 
-        if (filter.length > 2) {
+        if (filter.length > filterDigit) {
           this.onFilter(filter);
         }
       });
@@ -79,16 +81,14 @@ class DataTableExtensions extends Component {
   onFilter(text) {
     const value = Utilities.lower(text);
 
-    const { constData } = this.state;
+    const { constData, filterDigit } = this.state;
     const { filterHidden } = this.props;
 
     let filtered = constData;
-
-    if (value.length > 2) {
+    if (value.length > filterDigit) {
       if (!filterHidden) {
         this.onDataRender();
       }
-
       filtered = Utilities.filter(value, constData, this.raw.data, filterHidden);
     }
 
@@ -152,6 +152,7 @@ DataTableExtensions.propTypes = {
   exportHeaders: PropTypes.bool,
   children: PropTypes.node,
   filterHidden: PropTypes.bool,
+  filterDigit: PropTypes.number,
 };
 
 DataTableExtensions.defaultProps = {
@@ -164,6 +165,7 @@ DataTableExtensions.defaultProps = {
   children: null,
   filterHidden: true,
   filterPlaceholder: 'Filter Table',
+  filterDigit: 2,
 };
 
 export default DataTableExtensions;
