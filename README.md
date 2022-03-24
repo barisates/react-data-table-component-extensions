@@ -29,7 +29,7 @@ $ npm install react-data-table-component-extensions
 - Export the file in \*.csv and \*.xls format.
 - Print the table data.
 - Filter table data by all columns.
-- Filter table can be set by special digit number, default value is 2
+- Filter table by digit length. Default value is 2.
 
 #### Example
 Example of filtering table data and export, print buttons.
@@ -48,7 +48,6 @@ function App() {
   const tableData = {
     columns,
     data,
-    filterDigit,
   };
 
   return (
@@ -123,14 +122,15 @@ Descriptions and configuration settings for component properties.
 
 | Property | Type | Required | Default | Description |
 |--------------------------|---------------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| columns | array<Columns> | yes | [] | Table column configuration |
-| data | array<Object> | no | [] | Table data |
+| columns | array<Columns> | yes | [ ] | Table column configuration |
+| data | array<Object> | no | [ ] | Table data |
 | filter | bool | no | true | Enable input filter |
 | filterPlaceholder | string | no | Filter Table | Default placeholder for the filter field |
 | **filterHidden** | bool | no | true | Filter hidden fields |
 | export | bool | no | true | Enable export button |
 | print | bool | no | true | Enable print button |
 | exportHeaders | bool | no | false | Exports data with table headers |
+| filterDigit | number | no | 2 | Number of digts to use in search. |
 
 
 ##### Column Properties
