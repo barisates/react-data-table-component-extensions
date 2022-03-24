@@ -29,6 +29,7 @@ $ npm install react-data-table-component-extensions
 - Export the file in \*.csv and \*.xls format.
 - Print the table data.
 - Filter table data by all columns.
+- Filter table can be set by special digit number, default value is 2
 
 #### Example
 Example of filtering table data and export, print buttons.
@@ -47,6 +48,7 @@ function App() {
   const tableData = {
     columns,
     data,
+    filterDigit,
   };
 
   return (
