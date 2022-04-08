@@ -1,17 +1,17 @@
 import Utilities from './utilities';
 
-const csv = (data, header) => {
+const csv = (data, header, fileName) => {
   const contentHeader = (header ? `${header.map(e => e.name).join(';')}\n` : '');
   const content = `${contentHeader}${data.map(e => Utilities.concat.csv(e)).join('\n')}`;
 
   return {
     content,
     type: 'text/csv',
-    name: `${document.title}.csv`,
+    name: `${fileName || document.title}.csv`,
   };
 };
 
-const excel = (data, header) => {
+const excel = (data, header, fileName) => {
   const contentHeader = (header ? `<thead><tr><td>${header.map(e => e.name).join('</td><td>')}</td><tr></thead>` : '');
   const contentBody = data.map(e => Utilities.concat.excel(e));
   const content = `<table>${contentHeader}<tbody>${contentBody.join('')}</tbody></table>`;
@@ -19,7 +19,7 @@ const excel = (data, header) => {
   return {
     content,
     type: 'application/vnd.ms-excel',
-    name: `${document.title}.xls`,
+    name: `${fileName || document.title}.xls`,
   };
 };
 

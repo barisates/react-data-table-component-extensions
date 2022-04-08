@@ -131,6 +131,7 @@ Descriptions and configuration settings for component properties.
 | print | bool | no | true | Enable print button |
 | exportHeaders | bool | no | false | Exports data with table headers |
 | filterDigit | number | no | 2 | Number of digts to use in search. |
+| fileName | string | no | document.title | Set exported csv and excel file name |
 
 
 ##### Column Properties
