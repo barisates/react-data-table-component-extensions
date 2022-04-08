@@ -66,10 +66,10 @@ class DataTableExtensions extends Component {
   onExport(e, type) {
     this.onDataRender();
 
-    const { exportHeaders } = this.props;
+    const { exportHeaders, fileName } = this.props;
     const { data, header } = this.raw;
 
-    const exportData = ExportMethod[type](data, (exportHeaders ? header : null));
+    const exportData = ExportMethod[type](data, (exportHeaders ? header : null), fileName);
 
     Utilities.download(exportData);
 
@@ -153,6 +153,7 @@ DataTableExtensions.propTypes = {
   children: PropTypes.node,
   filterHidden: PropTypes.bool,
   filterDigit: PropTypes.number,
+  fileName: PropTypes.string,
 };
 
 DataTableExtensions.defaultProps = {
@@ -166,6 +167,7 @@ DataTableExtensions.defaultProps = {
   filterHidden: true,
   filterPlaceholder: 'Filter Table',
   filterDigit: 2,
+  fileName: document.title,
 };
 
 export default DataTableExtensions;
